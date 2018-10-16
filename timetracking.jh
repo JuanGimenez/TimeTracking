@@ -1,0 +1,34 @@
+
+entity Employee {
+	/**
+	* The firstname attribute.
+	*/
+    id String  Unique required
+	firstName String required,
+	lastName String required,
+	email String required,
+    contrasena String required
+
+entity TimeTracking {
+	fecha Instant,
+    startDate Instant,
+	endDate Instant,
+    descanso Integer
+}
+
+entity Task {
+	title String,
+	description String
+}
+
+
+
+relationship ManyToOne {
+	TimeTracking{employee(id)} to Employee{timeTracking}
+}
+
+relationship ManyToOne {
+	TimeTracking{task(name)} to Task{timeTracking}
+}
+
+
